@@ -109,8 +109,8 @@ jobs:
           file: ./backend_userService/Dockerfile
           push: true
           tags: |
-            ${{ env.DOCKERHUB_NAMESPACE }}/backend_userService:latest
-            ${{ env.DOCKERHUB_NAMESPACE }}/backend_userService:${{ env.IMAGE_TAG }}
+            ${{ env.DOCKERHUB_NAMESPACE }}/backend_userservice:latest
+            ${{ env.DOCKERHUB_NAMESPACE }}/backend_userservice:${{ env.IMAGE_TAG }}
 
       - name: Build & push backend_messageService image
         uses: docker/build-push-action@v4
@@ -119,8 +119,8 @@ jobs:
           file: ./backend_messageService/Dockerfile
           push: true
           tags: |
-            ${{ env.DOCKERHUB_NAMESPACE }}/backend_messageService:latest
-            ${{ env.DOCKERHUB_NAMESPACE }}/backend_messageService:${{ env.IMAGE_TAG }}
+            ${{ env.DOCKERHUB_NAMESPACE }}/backend_messageservice:latest
+            ${{ env.DOCKERHUB_NAMESPACE }}/backend_messageservice:${{ env.IMAGE_TAG }}
 
       - name: Build & push backend_nearbyService image
         uses: docker/build-push-action@v4
@@ -129,8 +129,8 @@ jobs:
           file: ./backend_nearbyService/Dockerfile
           push: true
           tags: |
-            ${{ env.DOCKERHUB_NAMESPACE }}/backend_nearbyService:latest
-            ${{ env.DOCKERHUB_NAMESPACE }}/backend_nearbyService:${{ env.IMAGE_TAG }}
+            ${{ env.DOCKERHUB_NAMESPACE }}/backend_nearbyservice:latest
+            ${{ env.DOCKERHUB_NAMESPACE }}/backend_nearbyservice:${{ env.IMAGE_TAG }}
 
       - name: Build & push backend_followService image
         uses: docker/build-push-action@v4
@@ -139,8 +139,8 @@ jobs:
           file: ./backend_followService/Dockerfile
           push: true
           tags: |
-            ${{ env.DOCKERHUB_NAMESPACE }}/backend_followService:latest
-            ${{ env.DOCKERHUB_NAMESPACE }}/backend_followService:${{ env.IMAGE_TAG }}
+            ${{ env.DOCKERHUB_NAMESPACE }}/backend_followservice:latest
+            ${{ env.DOCKERHUB_NAMESPACE }}/backend_followservice:${{ env.IMAGE_TAG }}
 
       - name: Build & push frontend image
         uses: docker/build-push-action@v4
