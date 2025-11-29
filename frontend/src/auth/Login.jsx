@@ -16,18 +16,20 @@ const Login = () => {
     });
   };
 
-  const detailsSubmit = async (e) => {
-    e.preventDefault();
-
+  const detailsSubmit = async () => {
     try {
-      const res = await axios.get(
+      const res = await axios.post(
         "http://a36b26e9e7919469ba1660e86fa0a9b4-399270085.ap-south-1.elb.amazonaws.com:8080/api/login",
-        form
+        form,
+        {
+          headers: { "Content-Type": "application/json" },
+        }
       );
       const token = res.data.token;
       localStorage.setItem("token", token);
       navigate("/main");
     } catch (error) {
+      console.error(error);
       alert("Invalid details");
     }
   };
@@ -44,12 +46,9 @@ const Login = () => {
         </p>
       </div>
 
-      {/* Form */}
+      {/* "Form" */}
       <div className="w-full md:flex-1 flex justify-center">
-        <form
-          onSubmit={detailsSubmit} method="GET"
-          className="flex flex-col w-full sm:w-4/5 md:w-[70%] bg-white shadow-lg p-6 sm:p-8 rounded-xl"
-        >
+        <div className="flex flex-col w-full sm:w-4/5 md:w-[70%] bg-white shadow-lg p-6 sm:p-8 rounded-xl">
           <h2 className="text-2xl font-semibold text-gray-800 text-center mb-6">
             Login
           </h2>
@@ -71,7 +70,8 @@ const Login = () => {
           />
 
           <button
-            type="submit"
+            type="button"
+            onClick={detailsSubmit}
             className="bg-blue-600 hover:bg-blue-700 text-white font-semibold p-3 rounded-lg w-full transition-all text-sm md:text-base"
           >
             Login
@@ -86,7 +86,7 @@ const Login = () => {
               Register
             </span>
           </p>
-        </form>
+        </div>
       </div>
     </div>
   );
