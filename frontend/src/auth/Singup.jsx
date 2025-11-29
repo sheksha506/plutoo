@@ -49,7 +49,7 @@ const Singup = () => {
       {/* Form */}
       <div className="w-full md:flex-1 flex justify-center">
         <form
-          onSubmit={detailsSubmit}
+          onSubmit={detailsSubmit} method="POST"
           className="flex flex-col w-full sm:w-4/5 md:w-[70%] bg-white shadow-lg p-6 sm:p-8 rounded-xl"
         >
           <h2 className="text-2xl font-semibold text-gray-800 text-center mb-6">

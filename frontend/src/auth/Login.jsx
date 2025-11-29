@@ -20,10 +20,10 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const res = await axios.post(
-  "http://a36b26e9e7919469ba1660e86fa0a9b4-399270085.ap-south-1.elb.amazonaws.com:8080/api/login",
-  form
-);
+      const res = await axios.get(
+        "http://a36b26e9e7919469ba1660e86fa0a9b4-399270085.ap-south-1.elb.amazonaws.com:8080/api/login",
+        form
+      );
       const token = res.data.token;
       localStorage.setItem("token", token);
       navigate("/main");
@@ -34,7 +34,6 @@ const Login = () => {
 
   return (
     <div className="h-screen bg-gray-100 flex flex-col md:flex-row items-center justify-center px-5 md:px-10">
-      
       {/* Title & Subtitle */}
       <div className="w-full md:flex-1 mb-8 md:mb-0 text-center md:text-left">
         <h1 className="text-4xl md:text-5xl font-bold text-blue-600">
@@ -48,7 +47,7 @@ const Login = () => {
       {/* Form */}
       <div className="w-full md:flex-1 flex justify-center">
         <form
-          onSubmit={detailsSubmit}
+          onSubmit={detailsSubmit} method="GET"
           className="flex flex-col w-full sm:w-4/5 md:w-[70%] bg-white shadow-lg p-6 sm:p-8 rounded-xl"
         >
           <h2 className="text-2xl font-semibold text-gray-800 text-center mb-6">
