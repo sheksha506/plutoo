@@ -16,7 +16,7 @@ export const getAllUsers = async(token) => {
         
     
     const res = await axios.post(
-  "http://a36b26e9e7919469ba1660e86fa0a9b4-399270085.ap-south-1.elb.amazonaws.com:8080/api",
+  "http://k8s-default-backendu-e26db51adb-657e4e43fd19a424.elb.ap-south-1.amazonaws.com:8080/api",
   form, {
         headers : {
             Authorization : `Bearer ${token}`
