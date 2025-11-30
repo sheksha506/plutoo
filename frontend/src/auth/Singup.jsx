@@ -23,7 +23,7 @@ const Singup = () => {
 
     try {
       await axios.post(
-  "http://a36b26e9e7919469ba1660e86fa0a9b4-399270085.ap-south-1.elb.amazonaws.com:8080/api/signup",
+  "http://backend-userservice:8080/api/signup",
   form
 );
 

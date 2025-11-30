@@ -15,7 +15,7 @@ export const getAllUsers = async(token) => {
 
         
     
-    const res = await axios.get("http://localhost:8080/api", {
+    const res = await axios.get("http://backend-userservice:8080/api", {
         headers : {
             Authorization : `Bearer ${token}`
         }
