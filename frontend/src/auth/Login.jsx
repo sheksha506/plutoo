@@ -19,7 +19,7 @@ const Login = () => {
   const detailsSubmit = async () => {
     try {
       const res = await axios.post(
-  "http://k8s-default-backendu-e26db51adb-657e4e43fd19a424.elb.ap-south-1.amazonaws.com:8080/api/login",
+  "/api/login",
   form,
 
         {
