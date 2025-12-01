@@ -34,21 +34,20 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()))
-                .csrf(AbstractHttpConfigurer::disable)
+                .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
                         // Explicitly allow signup and login POST requests
-                        .requestMatchers(HttpMethod.POST, "/api/signup").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/api/login").permitAll()
-
-                        // Allow CORS preflight requests (OPTIONS) for signup/login
-                        .requestMatchers(HttpMethod.OPTIONS, "/api/signup").permitAll()
-                        .requestMatchers(HttpMethod.OPTIONS, "/api/login").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/api/signup", "/api/signup/").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/api/login", "/api/login/").permitAll()
 
                         // Allow email lookups without auth
+                        .requestMatchers("/api/email/**").permitAll()
 
+                        // Allow actuator health/info without auth
+                        .requestMatchers("/actuator/health", "/actuator/info").permitAll()
 
                         // All other API endpoints require authentication
-                        .requestMatchers("/api/**").permitAll()
+                        .requestMatchers("/api/**").authenticated()
 
                         // Everything else requires authentication too
                         .anyRequest().authenticated()
