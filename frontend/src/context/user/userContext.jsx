@@ -13,11 +13,11 @@ export const UserProvider = ({ children }) => {
 
   const [state, dispatch] = useReducer(UserReducer, initialState);
 
-  const fetchAllUsers = async (token) => {
+  const fetchAllUsers = async () => {
     try {
       dispatch({ type: "LOADING" });
 
-      const filtered = await getAllUsers(token);
+      const filtered = await getAllUsers();
 
       dispatch({
         type: "SET_USERS",
