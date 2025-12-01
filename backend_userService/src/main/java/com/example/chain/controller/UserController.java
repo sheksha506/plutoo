@@ -88,16 +88,8 @@ public class UserController {
 
 
     @GetMapping
-    public ResponseEntity<List<User>> getAllUsers(@RequestHeader ("Authorization") String authHeader){
-        if(authHeader == null || !authHeader.startsWith("Bearer ")) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-        }
+    public ResponseEntity<List<User>> getAllUsers(){
 
-        String token = authHeader.substring(7); // remove "Bearer "
-
-        if(!jwtTokenProvider.isValid(token)) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-        }
         return ResponseEntity.ok(userService.getUsers());
     }
 

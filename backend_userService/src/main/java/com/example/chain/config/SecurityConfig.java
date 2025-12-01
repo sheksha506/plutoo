@@ -39,7 +39,7 @@ public class SecurityConfig {
                         // Allow email lookups and actuator endpoints
                         .requestMatchers("/api/email/**", "/actuator/health").permitAll()
 
-                        .requestMatchers(HttpMethod.GET, "/api").authenticated()
+                        .requestMatchers(HttpMethod.GET, "/api").permitAll()
 
                         // All other API endpoints require authentication
                         .anyRequest().authenticated()
