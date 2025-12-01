@@ -5,6 +5,7 @@ import com.example.chain.jwt.JwtAuthenticationFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.WebSecurityConfigurer;
@@ -31,18 +32,23 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .cors(cors-> cors.configurationSource(corsConfigurationSource()))
-                .csrf(csrf->csrf.disable())
-                .authorizeHttpRequests(auth->auth.requestMatchers("/api/signup",
-                                "/api/login", "/api/email/**").permitAll()
+                .cors(cors -> cors.configurationSource(corsConfigurationSource()))
+                .csrf(csrf -> csrf.disable())
+                .authorizeHttpRequests(auth -> auth
+                        // Explicitly allow signup and login POST requests
+                        .requestMatchers(HttpMethod.POST, "/api/signup").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/api/login").permitAll()
 
+                        // Allow email lookups without auth
+                        .requestMatchers("/api/email/**").permitAll()
 
+                        // All other API endpoints require authentication
                         .requestMatchers("/api/**").authenticated()
 
-                        .anyRequest()
-                        .authenticated()
-
+                        // Everything else requires authentication too
+                        .anyRequest().authenticated()
                 );
+
         http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
         return http.build();
     }
