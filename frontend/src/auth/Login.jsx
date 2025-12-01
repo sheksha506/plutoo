@@ -2,7 +2,6 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-
 const Login = () => {
   const navigate = useNavigate();
   const [form, setForm] = useState({
@@ -20,8 +19,8 @@ const Login = () => {
   const detailsSubmit = async () => {
     try {
       const res = await axios.post(
-  "/api/login",
-  form,
+        "/api/login",
+        form,
 
         {
           headers: { "Content-Type": "application/json" },

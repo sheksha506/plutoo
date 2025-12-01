@@ -1,7 +1,6 @@
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 
-
 export const getAllUsers = async (token) => {
   if (!token) return;
 
