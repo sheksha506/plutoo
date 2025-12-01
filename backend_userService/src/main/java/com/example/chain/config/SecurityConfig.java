@@ -45,10 +45,10 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.OPTIONS, "/api/login").permitAll()
 
                         // Allow email lookups without auth
-                        .requestMatchers("/api/email/**").permitAll()
+
 
                         // All other API endpoints require authentication
-                        .requestMatchers("/api/**").authenticated()
+                        .requestMatchers("/api/**").permitAll()
 
                         // Everything else requires authentication too
                         .anyRequest().authenticated()
