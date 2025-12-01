@@ -1,3 +1,5 @@
+package com.example.chain.config;
+
 import com.example.chain.jwt.JwtAuthenticationFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -32,11 +34,11 @@ public class SecurityConfig {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) // Use stateless sessions for JWT
                 .authorizeHttpRequests(auth -> auth
                         // Allow specific POST requests using Ant-style path matching
-                        .requestMatchers(HttpMethod.POST, "/api/signup/**", "/api/login/**").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/api/signup", "/api/login").permitAll()
 
                         // Allow email lookups and actuator endpoints
-                        .requestMatchers("/api/email/**", "/actuator/health", "/actuator/info").permitAll()
-
+                        .requestMatchers("/api/email/**", "/actuator/health").permitAll()
+git
                         // All other API endpoints require authentication
                         .anyRequest().authenticated()
                 );
