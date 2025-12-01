@@ -39,9 +39,7 @@ const Login = () => {
     <div className="h-screen bg-gray-100 flex flex-col md:flex-row items-center justify-center px-5 md:px-10">
       {/* Title & Subtitle */}
       <div className="w-full md:flex-1 mb-8 md:mb-0 text-center md:text-left">
-        <h1 className="text-4xl md:text-5xl font-bold text-blue-600">
-          NearBook
-        </h1>
+        <h1 className="text-4xl md:text-5xl font-bold text-blue-600">Pluto</h1>
         <p className="text-lg md:text-xl mt-4 text-gray-700 hidden sm:block">
           Connect with nearby users and make new friends instantly.
         </p>
