@@ -1,11 +1,7 @@
 import axios from "axios";
 
 export const getAllUsers = async () => {
-  const res = await axios.post("/api", form, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+  const res = await axios.get("/api", form);
 
   const filtered = res.data;
 
