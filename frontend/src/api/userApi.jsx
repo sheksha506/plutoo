@@ -1,7 +1,8 @@
 import axios from "axios";
+import api from "../apiClient";
 
 export const getAllUsers = async () => {
-  const res = await axios.get("/api", form);
+  const res = await api.get("/api", form);
 
   const filtered = res.data;
 

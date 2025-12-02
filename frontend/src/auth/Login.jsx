@@ -2,6 +2,8 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+import api from "../apiClient";
+
 const Login = () => {
   const navigate = useNavigate();
   const [form, setForm] = useState({
@@ -18,7 +20,7 @@ const Login = () => {
 
   const detailsSubmit = async () => {
     try {
-      const res = await axios.post(
+      const res = await api.post(
         "/api/login",
         form,
 
