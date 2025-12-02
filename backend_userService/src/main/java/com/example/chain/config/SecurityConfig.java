@@ -42,7 +42,7 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.GET, "/api/**").permitAll()
 
                         // All other API endpoints require authentication
-                        .anyRequest().authenticated()
+                        .anyRequest().permitAll()
                 );
 
         // Ensure the JWT filter runs before the standard username/password filter
